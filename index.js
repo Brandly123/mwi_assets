@@ -4,7 +4,7 @@ const fileSelect = document.getElementById("file");
 const sizeSelect = document.getElementById("size");
 const searchInput = document.getElementById("search");
 
-let assetUrl = "/assets/skills.svg";
+let assetUrl = "/mwi_assets/assets/skills.svg";
 let spriteElements = [];
 
 
@@ -111,7 +111,7 @@ async function getSprites(url) {
   return [...doc.querySelectorAll("symbol[id]")].map((el) => el.id);
 }
 function switchAssetFile() {
-  assetUrl = `/assets/${fileSelect.value}.svg`
+  assetUrl = `/mwi_assets/assets/${fileSelect.value}.svg`
   getSprites(assetUrl).then(renderSprites);
 }
 switchAssetFile()
