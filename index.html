@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: #131419;
+            overflow: hidden;
+        }
+        * {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 6px 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: #1f232b;
+            color: white;
+            min-width: 60px;
+        }
+        #assets {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 80vh;
+
+            padding: 6px 8px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: #1f232b;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        #assets::-webkit-scrollbar {
+            display:none
+        }
+        svg {
+            position: relative;
+            cursor: pointer;
+            transition: 0.25s transform;
+
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+        }
+        svg:hover {
+            transform: scale(1.2,1.2);
+        }
+    </style>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="controls">
+        <label>
+            Image Size:
+            <select id="size">
+                <option value="32">32x32</option>
+                <option value="64">64x64</option>
+                <option value="128" selected>128x128</option>
+                <option value="256">256x256</option>
+                <option value="512">512x512</option>
+                <option value="1024">1024x1024</option>
+                <option value="2048">2048x2048</option>
+            </select>
+        </label>
+        <label>
+            Asset File:
+            <select id="file" onchange="switchAssetFile()">
+                <option value="items" selected>Items</option>
+                <option value="skills">Skills</option>
+                <option value="abilities">Abilities</option>
+                <option value="actions">Actions</option>
+                <option value="buffs">Buffs</option>
+                <option value="monster">Monsters</option>
+                <option value="avatars">Avatars</option>
+                <option value="chat_icons">Chat Icons</option>
+                <option value="outfits">Avatar Outfits</option>
+                <option value="logo">Logos</option>
+                <option value="misc">Miscelaneous</option>
+            </select>
+        </label>
+        <label>
+            Filter:
+            <input id="search" type="search" autocomplete="off" oninput="applyFilter(event.target.value)">
+        </label>
+    </div>
+    <div id="assets"></div>
+</body>
+</html>
